@@ -14,7 +14,7 @@ read check
 if [ $check = "n" ] || [ $check = "N" ]; then
     echo "Please install all the dependencies and run the script again."
     exit
-else
+else if [ $check = "y" ] || [ $check = "Y" ]; then
     git clone --recursive https://github.com/dragonflydb/dragonfly && cd dragonfly
     ./helio/blaze.sh -release
     cd build-opt
@@ -25,6 +25,10 @@ else
     cp dragonfly.service /usr/lib/systemd/system/
 
     echo "Dragonfly installed. run 'systemctl start dragonfly' to start the service."
+
+else
+    echo "Unknown input. Exiting."
+
 fi
 
 
