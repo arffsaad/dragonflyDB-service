@@ -1,0 +1,14 @@
+[Unit]
+Description=Dragonfly: An in-place replacement for Redis and Memcached!
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=root
+ExecStart=dragonfly --alsologtostderr
+
+[Install]
+WantedBy=multi-user.target
